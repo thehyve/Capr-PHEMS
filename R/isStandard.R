@@ -80,10 +80,10 @@ isStandard <- function(db_connection, data_concepts_path, vocab_schema, save_pat
         "S" = "Standard",
         "C" = "Classification"
       )) |>
-      dplyr::filter(!(standard_concept == "Standard"))
+      dplyr::filter(!(standard_concept %in% c("Standard", "Classification")))
     
     # Add non-standard concept info to vectors
-    ind <- which(!(joined$standard_concept %in% c("S")))
+    ind <- which(!(joined$standard_concept %in% c("S", "C")))
     nonStandard <- append(nonStandard, joined$concept_id[ind])
     conceptNameNonStandard <- append(conceptNameNonStandard, joined$concept_name[ind])
     sourceCodeNonStandard <- append(sourceCodeNonStandard, joined$sourceCode[ind])
