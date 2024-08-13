@@ -1,6 +1,6 @@
 #' Count Occurrences of Values in Database Tables
 #'
-#' This function counts the occurrences of specified concept ids within specified tables in a OMOP database, 
+#' This function counts the occurrences of specified concept ids within specified tables in a OMOP database,
 #' including direct occurrences and occurrences through descendants, based on a provided cdm_schema and links.
 #' It returns a tibble summarizing the counts across persons and across records.
 #'
@@ -12,25 +12,23 @@
 #' @param vocab_schema The database vocab_schema in which the concept tables are located.
 #' @param save_path The path to save the results to. If NULL, the results are not saved.
 #'
-#' @return A tibble with columns for the number of times any concept from 'v' occurs: direct count of persons, 
-#'         direct count of records, descendant count of persons, and descendant count of records. 
-#'         The tibble also includes the concept names derived from `v` and is arranged by the total 
+#' @return A tibble with columns for the number of times any concept from 'v' occurs: direct count of persons,
+#'         direct count of records, descendant count of persons, and descendant count of records.
+#'         The tibble also includes the concept names derived from `v` and is arranged by the total
 #'         record count (direct + descendant).
 #'
 #' @examples
 #' # Assuming `db_connection` is a valid database connection, `cdm_schema` is set to "public",
 #' # `tables` contains the names of the tables to search, `links` defines the relevant fields,
 #' # and `v` contains the values to search for:
-#' results <- countOccurrences(v = c(1, 2), tables = c("observation", "condition_occurrence"), 
-#'                             links = list(observation = "observation_concept_id", condition_occurrence = "condition_concept_id", ...), 
-#'                             db_connection = db_connection, cdm_schema = "public")
+#' results <- countOccurrences(
+#'   v = c(1, 2), tables = c("observation", "condition_occurrence"),
+#'   links = list(observation = "observation_concept_id", condition_occurrence = "condition_concept_id", ...),
+#'   db_connection = db_connection, cdm_schema = "public"
+#' )
 #'
 #' @export
 countOccurrences <- function(v, tables, links, db_connection, cdm_schema, vocab_schema, save_path = NULL) {
-  library(DBI)
-  library(dplyr)
-  library(tibble)
-
   stopifnot(is.vector(v))
   stopifnot(is.character(tables) & is.vector(tables))
   stopifnot(is.list(links))
@@ -74,38 +72,44 @@ countOccurrences <- function(v, tables, links, db_connection, cdm_schema, vocab_
       cdm_schema, table, vocab_schema, concept_id_field, paste(v, collapse = ",")
     )
     
-    combined_res <- dbGetQuery(db_connection, combined_sql)
-
+    combined_sql_translated <- SqlRender::translate(
+      sql = combined_sql,
+      targetDialect = attr(db_connection, "dbms")
+    )
+    
+    combined_res <- DatabaseConnector::querySql(db_connection, combined_sql_translated) |>
+      dplyr::rename(concept_id = CONCEPT_ID, count_persons = COUNT_PERSONS, count_records = COUNT_RECORDS,
+                    desc_count_person = DESC_COUNT_PERSON, desc_count_record = DESC_COUNT_RECORD)
     not_in_data <- v[!(v %in% combined_res$concept_id)]
     combined_res <- combined_res |>
-      bind_rows(tibble(
+      dplyr::bind_rows(tibble::tibble(
         concept_id = not_in_data,
         count_persons = 0,
         count_records = 0,
         desc_count_person = 0,
         desc_count_record = 0
-       ))
+      ))
     
     # Append results
     results[[table]] <- combined_res
   }
   
   # Combine all results into a single data frame and transform
-  final_res <- bind_rows(results) %>%
-    group_by(concept_id) %>%
-    summarise(
+  final_res <- dplyr::bind_rows(results) |>
+    dplyr::group_by(concept_id) |>
+    dplyr::summarise(
       count_persons = sum(count_persons),
       count_records = sum(count_records),
       desc_count_person = sum(desc_count_person),
       desc_count_record = sum(desc_count_record)
-    ) %>%
-    ungroup() %>%
-    mutate(concept_name = names(v)[match(concept_id, v)]) %>%
-    arrange(desc(count_records + desc_count_record))
-
-    if (!is.null(save_path)) {
-      readr::write_csv(final_res, paste0(save_path, '/', 'count_occurrences.csv'))
-    }
+    ) |>
+    dplyr::ungroup() |>
+    dplyr::mutate(concept_name = names(v)[match(concept_id, v)]) |>
+    dplyr::arrange(dplyr::desc(count_records + desc_count_record))
+  
+  if (!is.null(save_path)) {
+    readr::write_csv(final_res, paste0(save_path, "/", "count_occurrences.csv"))
+  }
   
   return(final_res)
 }
