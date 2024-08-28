@@ -12,12 +12,17 @@ scratch/
 inst/doc
 
 # project-specific
+alphabetically_sort.py
 inst/config/*
 !inst/config/*-sample.yml
 
 inst/extdata/**/*
 
-!inst/extdata/phems_variable_list
+!inst/extdata/phems_variables_by_uc
+!inst/extdata/phems_variables_by_uc/*
+!inst/extdata/phems_variables_by_uc/*/*
+
+!inst/extdata/standardness
 
 !inst/extdata/json
 inst/extdata/json/*
@@ -27,6 +32,8 @@ inst/extdata/standard_concepts/*
 
 !inst/extdata/vocabularies
 inst/extdata/vocabularies/*
+
+R/process_ucs.R
 
 !*.gitkeep
 

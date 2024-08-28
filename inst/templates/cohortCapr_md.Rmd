@@ -47,7 +47,9 @@ connectionDetails <- createConnectionDetails(
 ```
 
 ## Concept sets
-Define a measurement concept set using Capr and include all descendants
+One concept set has been defined per use case.
+Here we collect the details for all concepts in the concept set (excluding descendants),
+this includes the concept name, standard status, domain, vocabulary, and more details.
 ```{r concept sets, echo=TRUE}
 ## Concept sets
 source("./R/conceptSets.R")
@@ -79,14 +81,14 @@ source("./R/countOccurrences.R")
 # Get links between tables and fields as input
 source("./R/table_linked_to_concept_field.R")
 
-additionalVarsCounts <-
+uc1Counts <-
   countOccurrences(
-    conceptSets$concepts$additional,
-    c("condition_occurrence", "procedure_occurrence", "measurement", "observation"),
-    links,
-    con,
-    connectionConfig$cdm_schema,
-    connectionConfig$vocabulary_schema,
+    v = conceptSets$concepts$uc1,
+    tables = names(links), # Query all CDM tables
+    links = links, # Links between tables and concept_id fields (cdm_table:field)
+    db_connection = con,
+    cdm_schema = connectionConfig$cdm_schema,
+    vocab_schema = connectionConfig$vocabulary_schema,
     save_path = config_oth$save_path_counts
   ) %>% print()
 
@@ -126,14 +128,14 @@ Similarly to isStandard(), isStandardCS() can be used to check the standardness 
 # connect to DB
 con <- connect(connectionDetails)
 
-# run for labTests conceptSet
-labTests <- conceptSets$conceptSets$labTests
+# run for uc2 conceptSet
+uc2 <- conceptSets$conceptSets$uc2
 
 # check standardness across concept set
 source('./R/isStandardCS.R')
 nonStandardCS <- isStandardCS(
   db_connection = con,
-  conceptSet = conceptSets$conceptSets$labTests,
+  conceptSet = conceptSets$conceptSets$uc2,
   # (optional) Save the results (with standard and non-standard concepts)
   save_path = config_oth$save_path_isStandard
 )
@@ -145,11 +147,8 @@ disconnect(con)
 nonStandardCS
 ```
 
-
 ## Initial event cohort
-People having any of the following:
-any of the lab test measurements
-limit to first/earliest occurrence of any of the above measurements (+descendants) per person
+NOTE: the cohort defined in this chunk serves solely as an example.
 ```{r Cohort definition}
 ## Cohort definition
 # Create cohort definition
