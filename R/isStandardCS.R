@@ -2,7 +2,7 @@
 #'
 #' This function examines a concept set for non-standard concepts by comparing them against a standard concepts table in a SQL database. It identifies non-standard concepts and optionally saves the details of these non-standard concepts to a specified path.
 #'
-#' @param db_connection A DBI database connection object to the SQL database containing the standard concepts table. This parameter is currently not used in the function but intended for future use where database queries might be necessary.
+#' @param db_connection A database connection object to the SQL database containing the standard concepts table. This parameter is currently not used in the function but intended for future use where database queries might be necessary.
 #' @param conceptSet An object representing a set of concepts, containing details such as concept ID, concept name, and whether it is a standard concept. The structure of this object should support `@Expression` to access the individual concepts and their properties.
 #' @param save_path (Optional) The file path where the details of non-standard concepts should be saved as a CSV file. If not provided, the information will not be saved but will still be checked for non-standard concepts.
 #'
@@ -18,7 +18,6 @@
 isStandardCS <- function(db_connection, conceptSet, save_path = NULL) {
   library(readr)
   library(dplyr)
-  library(DBI)
 
   # Initialize vectors for non-standard concepts
   nonStandard <- c()
@@ -53,7 +52,7 @@ isStandardCS <- function(db_connection, conceptSet, save_path = NULL) {
     concept_id,
     concept_set,
     standardness
-  )
+  ) %>% dplyr::arrange(standardness, concept_id)
 
   # Save if not empty and save_path is provided
   if (!is.null(save_path) && nrow(df) > 0) {

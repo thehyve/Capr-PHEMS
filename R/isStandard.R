@@ -63,7 +63,9 @@ isStandard <- function(db_connection, data_concepts_path, vocab_schema, save_pat
       select(sourceCode, concept_id)
 
     # Join tables
-    joined <- inner_join(concept_table, tb, by = "concept_id")
+    joined <- inner_join(concept_table, tb, by = "concept_id") %>% arrange(standard_concept, concept_id)
+    # NA == non-standard
+    joined$standard_concept[is.na(joined$standard_concept)] <- "Non-standard"
 
     # Add non-standard concept info to vectors
     ind <- which(!(joined$standard_concept %in% c('S')))
@@ -91,8 +93,6 @@ isStandard <- function(db_connection, data_concepts_path, vocab_schema, save_pat
     }
   }
   
-  # NA == non-standard
-  standardness[is.na(standardness)] <- "Non-standard"
   # Create table of non-standard concepts
   res <- tibble::tibble(
     concept_id = nonStandard,
