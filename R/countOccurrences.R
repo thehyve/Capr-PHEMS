@@ -75,7 +75,7 @@ countOccurrences <- function(v, tables, links, db_connection, cdm_schema, vocab_
 
     ind_not_in_data <- which(!(v %in% combined_res$concept_id))
     combined_res <- combined_res |>
-      dplyr::bind_rows(tibble(
+      dplyr::bind_rows(tibble::tibble(
         concept_id = v[ind_not_in_data],
         concept_name = "Unknown; concept_id not found in data",
         domain_id = "Unknown; concept_id not found in data",
