@@ -227,4 +227,6 @@ test_that("countOccurrences performs count query correctly", {
     dplyr::arrange(dplyr::desc(count_records + desc_count_record))
 
   expect_equal(result, expected_result)
+
+  DatabaseConnector::disconnect(conn)
 })
