@@ -13,6 +13,8 @@ inst/doc
 
 # project-specific
 alphabetically_sort.py
+parse_requirements.py
+
 inst/config/*
 !inst/config/*-sample.yml
 
@@ -34,6 +36,7 @@ inst/extdata/standard_concepts/*
 inst/extdata/vocabularies/*
 
 R/process_ucs.R
+
 
 !*.gitkeep
 
