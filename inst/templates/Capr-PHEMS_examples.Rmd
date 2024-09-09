@@ -1,7 +1,7 @@
 ---
-title: "cohortCapr markdown"
+title: "Capr-PHEMS example usage"
 author: "Guus @TheHyve"
-date: "2024-07-17"
+date: "2024-08-29"
 output: pdf_document
 ---
 ## Set-up knitr
@@ -11,7 +11,7 @@ knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 knitr::opts_chunk$set(echo = TRUE)
 
 # knitr::purl(
-#   input = './inst/templates/cohortCapr_md.Rmd',
+#   input = './inst/templates/cohortCapr_examples.Rmd',
 #   output = './inst/templates/cohortCapr.R'
 # )
 ```
@@ -32,7 +32,10 @@ library(CirceR)
 library(Capr)
 ```
 
-## Connect to DB
+## Create connection details
+Here we specify our connection details. In this case, we use a yml configuration file
+to specify our connection details. Alternatively, strings may be used directly to assign
+the function arguments. These details will allow us to connect to the DB / OMOP CDM instance.
 ```{r connect to database, eval=TRUE, include=TRUE}
 #  Use connection details from configuration
 connectionDetails <- createConnectionDetails(
@@ -47,9 +50,12 @@ connectionDetails <- createConnectionDetails(
 ```
 
 ## Concept sets
-One concept set has been defined per use case.
-Here we collect the details for all concepts in the concept set (excluding descendants),
-this includes the concept name, standard status, domain, vocabulary, and more details.
+Concept sets have been defined per use case in ./R/conceptSets.R.
+Here we collect the details for all concept ids in all created concept sets 
+using the Capr::getConceptSetDetails() function. This can only be done for
+concepts that exist within the concept set; not for descendants of these concepts.
+This function can be applied to any concept set and returns the concept_name,
+standardness, the domain, the source vocabulary and code, and more.
 ```{r concept sets, echo=TRUE}
 ## Concept sets
 source("./R/conceptSets.R")
@@ -68,10 +74,12 @@ disconnect(con)
 ```
 
 ## Concept counts
-Retrieve counts for a concept set
+Retrieve counts for all concepts in a concept set.
+Return the counts on the person (1) and record (2) level for each concept expli-
+citly in the concept set and on the person (3) and record (4) level including
+all descendants of concepts in the conceptSet.
 ```{r count occurences}
 ## Count occurrences of each concept in data
-
 # Establish connection
 con <- connect(connectionDetails)
 
@@ -96,9 +104,26 @@ uc1Counts <-
 disconnect(con)
 ```
 
+## Standard and non-standard concepts given a database connection
+The isStandardDB function checks for every concept used in a CDM instance whether it is standard or not. It works by joining the CDM tables to the concept table in the vocabulary schema on the concept_id. The function returns a table of non-standard concepts.
+```{r Standardness check DB}
+# Connect to DB
+con <- connect(connectionDetails)
+
+# Return table of non-standard concepts
+source('./R/isStandardDB.R')
+nonStandardDB <- isStandardDB(
+  db_connection = con,
+  cdm_schema = connectionConfig$cdm_schema,
+  vocab_schema = connectionConfig$vocabulary_schema,
+  links = links, # Links between tables and concept_id fields (cdm_table:field)
+  save_path = config_oth$save_path_isStandard
+) %>% print()
+```
+
 ## Standard and non-standard concepts given a list of concept IDs
-To check for each concept in a list of concept_ids and source codes, the "isStandard.R" function
-can be used. This takes as input a list of concept_ids and source codes and returns a table of non-standard concepts.
+To check for each concept in a list of concept_ids and source codes, the "isStandard.R" function is used. This function takes as input a list of concept_ids and source codes and returns a table of non-standard concepts. Saved results include all concepts regardless
+of standardness.
 See inst/extdata/phems-variable-list for examples of CSVs tables in the expected format.
 ```{r Standard non-standard check}
 # Connect to DB
@@ -123,7 +148,7 @@ nonStandard
 ```
 
 ## Standard and non-standard concepts given a concept set
-Similarly to isStandard(), isStandardCS() can be used to check the standardness of concepts, but rather given a concept set than a list.
+Similarly to isStandard(), isStandardCS() can be used to check the standardness of concepts, but rather given a concept set than a list. The function returns a table of non-standard concepts. Saved results include all concepts regardless of standardness.
 ```{r Standard non-standard check concept set}
 # connect to DB
 con <- connect(connectionDetails)
@@ -134,7 +159,6 @@ uc2 <- conceptSets$conceptSets$uc2
 # check standardness across concept set
 source('./R/isStandardCS.R')
 nonStandardCS <- isStandardCS(
-  db_connection = con,
   conceptSet = conceptSets$conceptSets$uc2,
   # (optional) Save the results (with standard and non-standard concepts)
   save_path = config_oth$save_path_isStandard
@@ -149,38 +173,46 @@ nonStandardCS
 
 ## Initial event cohort
 NOTE: the cohort defined in this chunk serves solely as an example.
+Here we define a cohort for UC1.
 ```{r Cohort definition}
 ## Cohort definition
 # Create cohort definition
 ch <- cohort(
   entry = entry(
-    # enter patients who have had cardiac surgery
-    procedure(conceptSets$conceptSets$cardiacSurgery),
+    # enter patients with conditions that would be in UC1
+    conditionOccurrence(conceptSets$conceptSets$uc1),
     observationWindow = continuousObservation(0, 0),
     primaryCriteriaLimit = "All"
   ),
   attrition = attrition(
-    withAny(
-      # include all cardiac complications
-      atLeast(
-        x = 1,
-        # include all cardiac complications represented by condition concepts
-        query = conditionOccurrence(conceptSets$conceptSets$cardiacComplications)
+    # keep patients with all criteria matched:
+    withAll(
+      # criteria 1 is defined by this withAny clause:
+      # keep patients with any of the following:
+      withAny(
+        # include patients with at least 1 cardiac complication...
+        atLeast(
+          x = 1,
+          # with cardiac complications represented by condition concepts and...
+          query = conditionOccurrence(conceptSets$conceptSets$cardiacComplications)
+        ),
+        atLeast(
+          x = 1,
+          # with cardiac complications represented by procedure concepts.
+          query = procedure(conceptSets$conceptSets$cardiacComplications)
+        )
       ),
-      atLeast(
-        x = 1,
-        # include all cardiac complications represented by procedure concepts
-        query = procedure(conceptSets$conceptSets$cardiacComplications)
-      )
-    ),
-    withAny(
-      atLeast(
-        x = 1,
-        # include patients who have had laboratory measurements
-        query = measurement(conceptSets$conceptSets$labTests)
+      # criteria 2 is defined by the second withAny clause:
+      # include patients who have had at least 1 laboratory measurement
+      withAny(
+        atLeast(
+          x = 1,
+          query = measurement(conceptSets$conceptSets$labTests)
+        )
       )
     )
   ),
+  # end of cohort at end of observation period
   exit = exit(
     endStrategy = observationExit()
   )
@@ -188,6 +220,7 @@ ch <- cohort(
 ```
 
 ## Write json expressions and sql queries
+json expressions can be used to save the cohort definitions and to generate SQL queries
 ```{r json and sql}
 ## Cohort json and sql
 # Generate json for cohort
@@ -203,6 +236,7 @@ sql <- CirceR::buildCohortQuery(
 )
 ```
 
+## Save cohort and concept set jsons
 Save the cohort and concept set jsons; these can be imported into ATLAS
 ```{r Save cohort and concept set json}
 write(chJson, paste0(config_oth$save_path_json, "/cohort.json"))
@@ -214,6 +248,7 @@ for (cs in names(conceptSets$conceptSets)) {
 }
 ```
 
+## Query the cohorts using the SQL query
 ```{r Create and generate cohorts}
 # Establish connection
 con <- connect(connectionDetails)
@@ -230,7 +265,7 @@ cohortTableNames <- CohortGenerator::getCohortTableNames(cohortTable = "cohort")
 CohortGenerator::createCohortTables(
   connectionDetails = connectionDetails,
   cohortDatabaseSchema = "cohort",
-  cohortTableNames = cohortTableNames,
+  cohortTableNames = cohortTableNames
 )
 
 # Generate the cohorts
@@ -251,9 +286,6 @@ cohortCounts <- CohortGenerator::getCohortCounts(
 
 # Disconnect
 disconnect(con)
-
-
-cohortCounts
 ```
 
 ## Number of people in db
