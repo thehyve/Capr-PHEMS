@@ -27,7 +27,13 @@
 #' @importFrom DatabaseConnector querySql
 #' @importFrom SqlRender render translate
 #' @export
-isStandardDB <- function(db_connection, cdm_schema, vocab_schema, links, save_path = NULL) {
+isStandardDB <- function(db_connection, cdm_schema, vocab_schema, links, save_path) {
+  stopifnot("Error: No or invalid database connection" = DatabaseConnector::dbIsValid(db_connection))
+  stopifnot("Error: No string provided as cdm_schema" = is.character(cdm_schema))
+  stopifnot("Error: No string provided as vocab_schema" = is.character(vocab_schema))
+  stopifnot("Error: No valid links between tables and concept id fields provided" = is.list(links))
+  stopifnot("Error: No string provided as save path" = is.null(save_path) | is.character(save_path))
+  
   # get tables
   tables <- names(links)
   

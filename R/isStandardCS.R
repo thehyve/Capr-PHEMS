@@ -15,6 +15,9 @@
 #'
 #' @export
 isStandardCS <- function(conceptSet, save_path = NULL) {
+  stopifnot("Error: No valid Capr concept set provided. Ensure the class of your conceptSet is 'ConceptSet' from the Capr package" = !is.null(conceptSet) && class(conceptSet) == "ConceptSet")
+  stopifnot("error: save_path is not a string" = is.null(save_path) | is.character(save_path))
+  
   # Initialize vectors for non-standard concepts
   nonStandard <- c()
   conceptNameNonStandard <- c()

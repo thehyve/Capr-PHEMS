@@ -22,6 +22,10 @@
 #' @importFrom DatabaseConnector connect disconnect querySql
 #' @export
 isStandard <- function(db_connection, data_concepts_path, vocab_schema, save_path = NULL) {
+  stopifnot("Error: No or invalid database connection" = DatabaseConnector::dbIsValid(db_connection))
+  stopifnot("Error: No string provided as data_concepts_path. Please point to a directory of CSVs with fields 'conceptId' and 'source_code'" = is.character(data_concepts_path))
+  stopifnot("Error: No string provided as vocab_schema" = is.character(vocab_schema))
+  
   # Read concept table from SQL database
   concept_table_query <- SqlRender::render(
     "SELECT concept_id, CONCEPT_NAME, standard_concept FROM @vocab_schema.concept",

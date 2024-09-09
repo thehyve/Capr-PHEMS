@@ -26,11 +26,13 @@
 #' )
 #'
 #' @export
-countOccurrences <- function(v, tables, links, db_connection, cdm_schema, vocab_schema, save_path = NULL) {
-  stopifnot(is.vector(v))
-  stopifnot(is.character(tables) & is.vector(tables))
-  stopifnot(is.list(links))
-  stopifnot(is.character(cdm_schema))
+countOccurrences <- function(db_connection, cdm_schema, vocab_schema, v, tables, links, save_path) {
+  stopifnot("Error: No valid database connection provided." = DatabaseConnector::dbIsValid(db_connection))
+  stopifnot("Error: v is not a valid vector. Please provide a vector of concept_ids." = is.vector(v))
+  stopifnot("Error: tables is not a valid character vector. Please provide CDM table names." = is.character(tables) & is.vector(tables))
+  stopifnot("Error: No links between tables and respective concept_id fields provided." = is.list(links))
+  stopifnot("Error: No string provided as cdm_schema" = is.character(cdm_schema))
+  stopifnot("Error: No string provided as save_path" = is.character(save_path))
 
   results <- list()
 
