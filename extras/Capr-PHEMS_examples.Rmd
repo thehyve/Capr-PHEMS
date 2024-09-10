@@ -1,10 +1,10 @@
 ---
-title: "Capr-PHEMS example usage"
+title: "CaprPHEMS example usage"
 author: "Guus @TheHyve"
 date: "2024-08-29"
 output: pdf_document
 ---
-## Set-up knitr
+## Set-up
 ```{r knitr, include=FALSE}
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 
@@ -58,14 +58,14 @@ This function can be applied to any concept set and returns the concept_name,
 standardness, the domain, the source vocabulary and code, and more.
 ```{r concept sets, echo=TRUE}
 ## Concept sets
-source("./R/conceptSets.R")
+data(conceptSets)
 
 # Establish connection
 con <- connect(connectionDetails)
 
 conceptSets$conceptSets <- conceptSets$conceptSets %>%
   # Add details for all concepts (excl. descendants)
-  lapply(FUN = getConceptSetDetails,
+  lapply(FUN = Capr::getConceptSetDetails,
          con = con,
          vocabularyDatabaseSchema = connectionConfig$vocabulary_schema)
 
