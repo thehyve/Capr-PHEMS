@@ -34,12 +34,15 @@ For Capr-PHEMS, it is recommended to clone the repo and work from the template s
 Please make sure you have the following:
 -   R version >= 4.4.0
 -   RStudio >= 2024.04.2
--   (CRAN library) renv >= 1.0.7
 
 
-1.  Clone the repo:
+1a.  Clone the repo:
 ```
 git clone https://github.com/thehyve/Capr-PHEMS.git
+```
+1b.  Install CaprPHEMS:
+```
+devtools::install_local("<relative_path_to_local_repo">)
 ```
 
 2.  Navigate to ./inst/config/. Here you will find two sample configuration files; config-sample.yml and connection_config-sample.yml
@@ -56,7 +59,7 @@ and fill in your configuration details.
 
 4a.  Open RStudio and verify renv >= 1.0.7 is installed by calling packageVersion("renv"). If not installed, call install.packages("renv)
 
-4b.  In the top-right "Project" dropdown menu, select "Open Project" and open ./Capr-PHEMS.Rproj
+4b.  In the top-right "Project" dropdown menu, select "Open Project" and open ./CaprPHEMS.Rproj
 
 4c.  .Rprofile will be sourced when opening the project; this will trigger renv::init() to initialize the environment. When prompted whether to use a DESCRIPTION file for dependency discovery, select option 1 to use the DESCRIPTION file. Next, you may be prompted the project already has a lockfile with another set of options. Here also select option 1 to restore the project from the lockfile. This will install all required packages to the environment. Your renv is now activated.
 
