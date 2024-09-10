@@ -65,6 +65,9 @@ and fill in your configuration details.
 
 5.  Run inst/scripts/main.R. This will save all the by The Hyve requested files to your device under inst/extdata/standardness for non-standard concept checks or inst/extdata/countoccurrences for the countOccurrences function. Please confirm these saved results may be shared prior to sharing.
 
+
+To better understand the functions and what they require and produce, the user may take a look at extras/Capr-PHEMS_examples.Rmd (or extras/pdf_vignettes/Capr-PHEMS_examples.Rmd). Examples with sample data are provided along with executable code in this MD script.
+
 # User Documentation
 
 Documentation can be found on the [package website](https://ohdsi.github.io/Capr/).
