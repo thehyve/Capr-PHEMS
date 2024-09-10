@@ -56,7 +56,8 @@ isStandard <- function(db_connection, data_concepts_path, vocab_schema, save_pat
   if (length(tables) == 0) {
     stop("No CSV files found in the specified directory.")
   }
-
+  
+  empty_tables <- c()
   for (table_path in tables) {
     table_name <- basename(table_path)
 
@@ -98,14 +99,18 @@ isStandard <- function(db_connection, data_concepts_path, vocab_schema, save_pat
 
     # Save if not empty and save_path is provided
     if (!is.null(save_path) && nrow(joined) > 0) {
-      message(paste0("saving file: ", table_name))
-      readr::write_csv(joined, paste0(save_path, "/", table_name))
+      message(paste0("saving file: ./isStandard_", table_name))
+      readr::write_csv(joined, paste0(save_path, "/isStandard_", table_name))
     } else if (is.null(save_path)) {
       next
     } else {
-      message(paste("No matches found for concept set.\n"))
+      empty_tables <- append(empty_tables, table_name)
+      message(paste0("No matches found for file: ", data_concepts_path, "/", table_name, ".\n"))
     }
   }
+  message(paste0("A file with the names of tables/files without non-standard concepts is saved here: ",
+                 save_path, "/isStandard_OnlyStandard.txt"))
+  readr::write_file(paste(empty_tables, collapse="\n"), paste0(save_path, "/isStandard_OnlyStandard.txt"))
 
   # Create table of non-standard concepts
   res <- tibble::tibble(

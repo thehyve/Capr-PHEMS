@@ -1,13 +1,15 @@
-#' This function counts the occurrences of specified concept ids within specified tables in an OMOP database,
+#' Count Occurrences of Concept IDs in OMOP Database
+#'
+#' This function counts the occurrences of specified concept IDs within specified tables in an OMOP database,
 #' including direct occurrences and occurrences through descendants, based on a provided cdm_schema and links.
 #' It returns a tibble summarizing the counts across persons and across records.
 #'
-#' @param v A vector of concept_ids to count occurrences for.
-#' @param tables A character vector of CDM table names to search within.
-#' @param links A list linking each table to its respective concept_id field.
 #' @param db_connection A database connection object through which queries will be executed.
 #' @param cdm_schema The database cdm_schema in which the tables are located.
 #' @param vocab_schema The database vocab_schema in which the concept tables are located.
+#' @param v A vector of concept_ids to count occurrences for.
+#' @param tables A character vector of CDM table names to search within.
+#' @param links A list linking each table to its respective concept_id field.
 #' @param save_path The path to save the results to as a CSV file. If NULL, the results are not saved.
 #'
 #' @return A tibble with columns for the number of times any concept from 'v' occurs: direct count of persons,
@@ -20,9 +22,10 @@
 #' # `tables` contains the names of the tables to search, `links` defines the relevant fields,
 #' # and `v` contains the values to search for:
 #' results <- countOccurrences(
+#'   db_connection = db_connection, cdm_schema = "public", vocab_schema = "vocabulary",
 #'   v = c(1, 2), tables = c("observation", "condition_occurrence"),
 #'   links = list(observation = "observation_concept_id", condition_occurrence = "condition_concept_id"),
-#'   db_connection = db_connection, cdm_schema = "public", vocab_schema = "vocabulary"
+#'   save_path = NULL
 #' )
 #'
 #' @export

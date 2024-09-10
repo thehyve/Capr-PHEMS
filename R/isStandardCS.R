@@ -16,7 +16,7 @@
 #' @export
 isStandardCS <- function(conceptSet, save_path = NULL) {
   stopifnot("Error: No valid Capr concept set provided. Ensure the class of your conceptSet is 'ConceptSet' from the Capr package" = !is.null(conceptSet) && class(conceptSet) == "ConceptSet")
-  stopifnot("error: save_path is not a string" = is.null(save_path) | is.character(save_path))
+  stopifnot("Error: save_path is not a string" = is.null(save_path) | is.character(save_path))
   
   # Initialize vectors for non-standard concepts
   nonStandard <- c()
@@ -55,8 +55,8 @@ isStandardCS <- function(conceptSet, save_path = NULL) {
 
   # Save if not empty and save_path is provided
   if (!is.null(save_path) && nrow(df) > 0) {
-    message(paste0("saving file: CONCEPTSET_", cs_name))
-    readr::write_csv(df, paste0(save_path, "/CONCEPTSET_", cs_name, ".csv"))
+    message(paste0("saving file: isStandardCS_", cs_name))
+    readr::write_csv(df, paste0(save_path, "/isStandardCS_", cs_name, ".csv"))
   } else if (is.null(save_path)) {
     message("No save path specified; returning non-standard concepts\n")
   } else {

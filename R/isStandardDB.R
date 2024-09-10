@@ -37,6 +37,7 @@ isStandardDB <- function(db_connection, cdm_schema, vocab_schema, links, save_pa
   # get tables
   tables <- names(links)
   
+  empty_tables <- c()
   for (table in tables) {
     # Read concept table from SQL database
     concept_table_query <- SqlRender::render(sprintf(
@@ -76,19 +77,24 @@ isStandardDB <- function(db_connection, cdm_schema, vocab_schema, links, save_pa
     } else {
       res <- dplyr::bind_rows(res, nonStandardDF)
     }
-  }
     
     # Save if not empty and save_path is provided
     if (!is.null(save_path) && nrow(res) > 0) {
-      readr::write_csv(concept_table, paste0(save_path, "/", table))
-      message(paste0("Saved results to ", save_path, "/", table, "\n"))
+      readr::write_csv(concept_table, paste0(save_path, "/isStandardDB_", table))
+      message(paste0("Saved results to ", save_path, "/isStandardDB_", table, "\n"))
     } else if (is.null(save_path)) {
       message("No save path provided, only returning non-standard concepts DF")
     } else if (nrow(res) == 0) {
+      empty_tables <- append(empty_tables, table)
       message("No non-standard concepts found in DB; not saving any file.\n")
     }
-
+  }
+  
+  # Save file with empty tables
+  message(paste0("A file with the names of tables/files without non-standard concepts is saved here: ",
+                 save_path, "/isStandardDB_AllStandard.txt"))
+  readr::write_file(paste(empty_tables, collapse=""), paste0(save_path, "/isStandardDB_AllStandard.txt"))
+  
   message(paste0("Finished checking for non-standard concepts.\n", nrow(res), " non-standard concepts found across tables."))
-
   return(res)
 }
