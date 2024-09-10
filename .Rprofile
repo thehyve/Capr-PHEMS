@@ -11,7 +11,7 @@ if (any(list.files() == "renv")) {
   message("No renv initialized, calling renv::init()")
   message("Please select to use only the DESCRIPTION file for dependency discovery if prompted, and next select 'Restore the project from the lockfile'")
   if (!requireNamespace("renv", quietly = TRUE)) {
-    install.packages("renv")
+    utils::install.packages("renv")
   }
   renv::init()
 }
