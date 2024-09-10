@@ -51,10 +51,10 @@ disconnect(con)
 # Establish connection
 con <- connect(connectionDetails)
 
-CaprPHEMS:::countOccurrences(
+CaprPHEMS::countOccurrences(
   v = conceptSets$concepts$uc1,
   tables = names(links), # Query all CDM tables
-  links = CaprPHEMS:::links, # Links between tables and concept_id fields (table:field)
+  links = CaprPHEMS::links, # Links between tables and concept_id fields (table:field)
   db_connection = con,
   cdm_schema = connectionConfig$cdm_schema,
   vocab_schema = connectionConfig$vocabulary_schema,
@@ -69,7 +69,7 @@ disconnect(con)
 con <- connect(connectionDetails)
 
 # Return table of non-standard concepts
-CaprPHEMS:::isStandardDB(
+CaprPHEMS::isStandardDB(
   db_connection = con,
   cdm_schema = connectionConfig$cdm_schema,
   vocab_schema = connectionConfig$vocabulary_schema,
