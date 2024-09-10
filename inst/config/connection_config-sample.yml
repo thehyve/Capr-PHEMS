@@ -1,18 +1,22 @@
 ---
+# 1. Copy this file using [cp ./config/connection_config-sample.yml ./config/connection_config.yml]
+# 2. In the new file, add your connection details under the `config` key; changes in default values will have no effect.
+
+#===============================================================================================
 ## Default configuration values
 #    Default values are necessary for the `config` CRAN library, not used in package otherwise
 #    No need to change these values; they are unused
 default:
   dbms: 'postgres'  # Database management system
-  user: 'postgres'
-  password: null 
-  server: localhost/omop_db
-  port: 5432
-  oracleDriver: null
-  pathToDriver: '~/jdbc/'
-  cdm_schema: 'cdm'
-  vocabulary_schema: 'vocab'
-  cohort_schema: 'cohort'
+  user: 'postgres'  # username
+  password: null  # password
+  server: localhost/omop_db  # server
+  port: 5432  # port
+  oracleDriver: null  # Oracle driver
+  pathToDriver: '~/jdbc/'  # path to driver
+  cdm_schema: 'cdm'  # schema where the OMOP CDM is stored
+  vocabulary_schema: 'vocab'  # schema where the vocabulary tables are stored
+  cohort_schema: 'cohort'  # schema where the cohort tables are stored (may be left empty if not using cohorts for now)
 
 ## Connection details
 #    Replace with your connection details
@@ -22,7 +26,7 @@ default:
 #    as not all of these details may be required.
 #    cdm_schema should point to the OMOP CDM schema
 #    vocabulary_schema should point to the schema where the vocabulary tables are stored
-#    cohort_schema should point to the schema where the cohort tables are stored
+#    cohort_schema should point to the schema where the cohort tables are stored; this is only necessary to provide if you are using cohorts
 #    All schemas should be EXISTING in the database
 config:
   dbms: ''
