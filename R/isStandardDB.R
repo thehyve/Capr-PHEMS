@@ -92,7 +92,7 @@ isStandardDB <- function(db_connection, cdm_schema, vocab_schema, links, save_pa
   
   # Save file with empty tables
   message(paste0("A file with the names of tables/files without non-standard concepts is saved here: ",
-                 save_path, "/isStandardDB_AllStandard.txt"))
+                 save_path, "/isStandardDB_OnlyStandard.txt"))
   readr::write_file(paste(empty_tables, collapse=""), paste0(save_path, "/isStandardDB_AllStandard.txt"))
   
   message(paste0("Finished checking for non-standard concepts.\n", nrow(res), " non-standard concepts found across tables."))
