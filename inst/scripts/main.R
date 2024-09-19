@@ -53,7 +53,7 @@ con <- connect(connectionDetails)
 
 CaprPHEMS::countOccurrences(
   v = conceptSets$concepts$uc1,
-  tables = names(links), # Query all CDM tables
+  tables = names(CaprPHEMS::links), # Query all CDM tables
   links = CaprPHEMS::links, # Links between tables and concept_id fields (table:field)
   db_connection = con,
   cdm_schema = connectionConfig$cdm_schema,
