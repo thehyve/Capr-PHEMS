@@ -1,3 +1,4 @@
+^requirements\.txt$
 ^renv$
 ^renv\.lock$
 ^Capr\.Rproj$
@@ -18,3 +19,4 @@ compare_versions
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
 ^LICENSE\.md$
+^data-raw$

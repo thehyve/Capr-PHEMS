@@ -1,0 +1,602 @@
+sourceCode,concept_id
+Dobutamine,1337720
+Dopamine,1337860
+Ephedrine,1143374
+Epinephrine,1343916
+Isoproterenol,1183554
+Levosimendan,40173184
+Milrinone,1368671
+Norepinephrine,1321341
+Phenylephrine,1135766
+Terlipressin,19119253
+Vasopressin,1507835
+Chemotherapy,4273629
+Dexamethasone,1518254
+Hydrocortisone,975125
+Methylprednisolone,1506270
+Monoclonal Antibodies,21603754
+Prednisolone,1550557
+Amikacin,1790868
+Amoxicillin,1713332
+Amoxicillin clavulanate,1713332
+Amoxicillin clavulanate,1759842
+Ampicillin,1717327
+Azithromycin,1734104
+Cefadroxil,1769535
+Cefazolin,1771162
+Cefepime,1748975
+Cefotaxime,1774470
+Ceftazidime,1776684
+Ceftazidime-Avibactam,46221507
+Ceftazidime-Avibactam,1776684
+Ceftolozane-Tazovactam,1741122
+Ceftolozane-Tazovactam,45892599
+Cefuroxime,1778162
+Chemotherapy,4273629
+Ciprofloxacin,1797513
+Clarithromycin,1750500
+Clindamycin,997881
+Colistin,901845
+Daptomycin,1786617
+Dexamethasone,1518254
+Ertapenem,1717963
+Erythromycin,1746940
+Fosfomycin,956653
+Fusidic acid,19010400
+Gentamicin,45892419
+Hydrocortisone,975125
+Imipenem,1778262
+Levofloxacin,1742253
+Linezolid,1736887
+Meropenem,1709170
+Methylprednisolone,1506270
+Monoclonal Antibodies,21603754
+Mupirocin,951511
+Nitrofurantoin,920293
+Norfloxacin,1721543
+Oxacillin,1724703
+Penicillin,1728416
+Piperacillin-Tazobactam,1746114
+Piperacillin-Tazobactam,1741122
+Prednisolone,1550557
+Rifampicin,1763204
+Teicoplanin,19078399
+Tetracycline,1836948
+Tobramycin,902722
+Trimethoprim-Sulfamethoxazole,1836430
+Trimethoprim-Sulfamethoxazole,1705674
+Vancomycin,1707687
+Andiulafungin,19026450
+Fluconazole,1754994
+Isovuconazole,35606695
+Micafungin,19018013
+Voriconazole,1714277
+Clindamycin-resistant,997881
+Clindamycin-resistant,37017134
+Drug-resistant,37017134
+ESBL,4257547
+Erythromycin-resistant,1746940
+Erythromycin-resistant,37017134
+MRSA,4019195
+Multidrug-resistant,37017134
+Vancomycin-resistant,1707687
+Vancomycin-resistant,37017134
+Previous diagnosis of sepsis measure ,1340204 
+Previous diagnosis of sepsis measure ,132797 
+Origin (external) ,44790567 
+Origin (internal) ,4294886 
+Reason for admission ,44803020 
+Surgical admission (non-urgent) ,4084670 
+Surgical admission (urgent) ,4123946  
+Non-surgical admission ,0 
+Central venous catheter ,4179206 
+Diagnosis of chronic condition ,443783 
+Diagnosis of chronic condition ,312723 
+Diagnosis of chronic condition ,201820 
+Diagnosis of chronic condition ,255573 
+Diagnosis of acute infection having the potential for progression to sepsis1+2 ,37174269 
+Diagnosis of acute infection having the potential for progression to sepsis1+2 ,4271450 
+Meningo-encephalitis ,4322814 
+hepatitis ,4243475 
+pneumonia ,255848 
+meningitis ,435785 
+bacteremia ,132736 
+viremia ,133327 
+UTI ,4331815 
+tuberculosis ,4103588 
+candidiasis ,433968 
+Diagnosis of SIRS ,434821 
+Diagnosis of condition producing immunodeficiency ,4140977 
+Abcess ,444202 
+appendicitis ,440448 
+NA,NA
+peritonitis ,196152 
+cellulitis ,435613 
+surgical site inflammation ,4300243 
+injury with open wound ,444187 
+renal insufficiency ,36716945 
+endocarditis ,441589 
+miocarditis ,314383 
+necrotizing enterocolitis ,44807226 
+Cancer ,443392 
+cardiac arrest ,321042 
+organ transplant ,4208341 
+acute kidney injury ,197320 
+immunodeficiency ,433740 
+asplenia ,45768671 
+cerebral palsy ,4134120 
+rheumatoid arthritis ,80809 
+sickle cell disease ,22281 
+ulcerative colitis ,81893 
+Crohn's disease ,201606 
+Cushing's disease ,195212 
+Down's syndrome ,439125 
+mitochondrial disease ,81539 
+nephrotic syndrome ,195314 
+neutropenia ,604243 
+Diagnosis of organ system dysfunction ,4080011 
+Antibiotics ,4085730 
+Antivirals ,4140762 
+Immunosuppressors ,4314777 
+Corticoids ,21602722 
+Antineoplastics ,4181511 
+Surgery previous to prediction time point ,4301351 
+"Chest opening, chest drainage ",4074689 
+Arterial blood pressure catheter ,45758028 
+Peripheral IV cannulas ,4177205 
+Urinary catheter ,4070667 
+Nasogastric/orogastric tube ,42538045 
+Endotracheal tube ,4097216 
+Tracheostomy ,44783799 
+Invasive ventilation ,44790095 
+Non-invasive ventilation ,4177224 
+FiO2 ,42869590 
+FiO2 ,8554 
+FiO2 ,8510 
+FiO2 ,720868 
+Mean Airway Pressure (MAP) ,42527086 
+Mean Airway Pressure (MAP) ,44777590 
+Mean Airway Pressure (MAP) ,8876 
+Mean Airway Pressure (MAP) ,44777602 
+Oxygenation index ,4193843 
+Oxygenation index ,8529 
+Oxygenation index ,0 
+ECMO ,4052536 
+ECMO type ,37206603 
+ECMO type ,37206601 
+Ventricular assist device (VAD) ,4235043 
+Dialysis ,4032243 
+Dialysis ,4051330 
+Peritoneal dialysis ,4324124 
+HR ,3027018 
+HR ,8483 
+RR ,3024171 
+RR ,8483 
+Body temperature ,3020891 
+Body temperature ,586323 
+SBP (Systolic Blood Pressure) ,3004249 
+SBP (Systolic Blood Pressure) ,8876 
+DBP (Diastolic blood pressure) ,3012888 
+DBP (Diastolic blood pressure) ,8876 
+SpO2 ,4096101 
+SpO2 ,8554 
+Urine output ,3014315 
+Urine output ,8587 
+Urine output ,44777613 
+Urine output ,33014 
+Urine output ,0 
+Weight ,3025315 
+Weight ,9529 
+Weight ,8504 
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+GCS ,3032652 
+Pupillary reactivity (right) ,21490963 
+Pupillary reactivity (right) ,4069590 
+Pupillary reactivity (right) ,45879546 
+Pupillary reactivity (right) ,45880051 
+Pupillary reactivity (right) ,4188539 
+Pupillary reactivity (right) ,4188540 
+Pupillary reactivity (left) ,21491763 
+Pupillary reactivity (left) ,4069590 
+Pupillary reactivity (left) ,45879546 
+Pupillary reactivity (left) ,45880051 
+Pupillary reactivity (left) ,4188539 
+Pupillary reactivity (left) ,4188540 
+Pupillary size (right) ,3027214 
+Pupillary size (right) ,8588 
+Pupillary size (right) ,36310446 
+Pupillary size (right) ,21499034 
+Pupillary size (right) ,4116857 
+Pupillary size (left) ,3021415 
+Pupillary size (left) ,8588 
+Pupillary size (left) ,36310446 
+Pupillary size (left) ,21499034 
+Pupillary size (left) ,4116857 
+Capillary refill time ,3045676 
+Capillary refill time ,8555 
+Peripheral pulse (pressure) ,4314539 
+Peripheral pulse (pressure) ,4181412 
+Peripheral pulse (pressure) ,4132135 
+Peripheral pulse (pressure) ,4124461 
+Peripheral pulse (pressure) ,8483 
+Central pulse ,4224504 
+Central pulse ,4181412 
+Central pulse ,4132135 
+Central pulse ,4124461 
+Central pulse ,8483 
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+Bacterial pathogen detection ,4036356 
+Name of bacterial pathogen detected ,432545 
+Quantification of colonies in culture ,4299649 
+Quantification of colonies in culture ,9278 
+PCR panel ,4196268 
+Antibiotic resistance ,44806682 
+Viral pathogen detection ,440029 
+PCR panel ,4196268 
+Leukocytes ,4212899 
+Leukocytes ,9278 
+Leukocytes ,0 
+Thromboplastin time ,4175016 
+Thromboplastin time ,8555 
+Thromboplastin time ,8523 
+D-dimer ,37393605 
+D-dimer ,8751 
+D-dimer ,8753 
+Fibrinogen ,4094436 
+Fibrinogen ,8636 
+Fibrinogen ,8753 
+Blood urea nitrogen ,4017361 
+Blood urea nitrogen ,8753 
+Blood urea nitrogen ,8840 
+Glucose ,3013826 
+Glucose ,8753 
+Glucose ,8840 
+Direct bilirubin ,4118986 
+Direct bilirubin ,8749 
+Direct bilirubin ,8753 
+Direct bilirubin ,8840 
+Ionized calcium ,44789220 
+Ionized calcium ,8753 
+PCT ,3046279 
+PCT ,8842 
+PCT ,8725 
+PCT ,8748 
+MR-proADM ,42536081 
+MR-proADM ,8736 
+Interleukin-6 ,3033291 
+Interleukin-6 ,8845 
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+pH ,3019977 
+pCO2 ,3027946 
+pCO2 ,44777602 
+pCO2 ,8876 
+PaO2 ,3027801 
+PaO2 ,44777602 
+PaO2 ,8876 
+HCO3 ,3008152 
+HCO3 ,8753 
+Base excess ,3003396 
+Base excess ,8753 
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+pH ,3012544 
+pH ,3009343 
+pCO2 ,3021447 
+pCO2 ,3023024 
+pCO2 ,44777602 
+pCO2 ,8876 
+PaO2 ,3024354 
+PaO2 ,3028626 
+PaO2 ,44777602 
+PaO2 ,8876 
+HCO3 ,3027273 
+HCO3 ,3015235 
+HCO3 ,8753 
+Base excess,3002032 
+Base excess,3003129 
+Base excess,8753 
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA
+NA,NA

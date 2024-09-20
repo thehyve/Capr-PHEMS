@@ -1,0 +1,278 @@
+sourceCode,concept_id
+dobutamine,1337720
+dopamine,1337860
+epinephrine,1343916
+milrinone,1368671
+norepinephrin,1321341
+vasopressin,1507835
+NA,9688
+Dobutamine,1337720
+Dopamine,1337860
+Ephedrine,1143374
+Epinephrine,1343916
+Isoproterenol,1183554
+Levosimendan,40173184
+Milrinone,1368671
+Norepinephrine,1321341
+Phenylephrine,1135766
+Terlipressin,19119253
+Vasopressin,1507835
+Aortic root pulmonary valve autograft with right vent to pulmonary artery valved conduit/ aortic root pulmonary valve autograft with right vent to pulmonary artery aortoventriculoplasty ,44790415 
+Aortic valve repair NEC ,4312194 
+Aortopulmonary reconstruction with systemic to pulmonary arterial shunt ,44793133 
+Application of band to pulmonary artery ,4049734 
+Closure of patent ductus arteriosus NEC ,4050114 
+Correction of partial anomalous pulmonary venous drainage ,4018441 
+Correction of persistent sinus venosus ,4020508 
+Creation of anastomosis to pulmonary artery from vena cava ,4019237 
+Extracorporeal membrane oxygenation ,4052536 
+Implantation of cardiac pacemaker system NEC ,4144921 
+Open aortic valvotomy ,4020520 
+Open implantation of ventricular assist device ,4139214 
+Other specified : repair of pulmonary artery ,4018926 
+Other specified other operations on ventricles of heart ,44510968 
+Other specified: plastic repair of aorta ,4019026 
+Plastic repair of aorta and end to end anastomosis of aorta ,4020812 
+Plication of diaphragm ,4217615 
+Primary repair of defect of atrioventricular septum NEC/repair of persistent ostium primum/repair of persistent ostium primum ,4187380 
+Primary repair of defect of atrioventricular septum NEC/repair of persistent ostium primum/repair of persistent ostium primum ,40486525 
+Primary repair of defect of interatrial septum NEC/repair of defect of interatrial septum using pericardial patch ,4020376 
+Release of vascular ring of aorta ,4019028 
+Relief of left ventricular outflow tract obstruction ,44790092 
+Removal of band from pulmonary artery ,4021725 
+Repair of defect of interventricular septum using prosthetic patch/unspecified repair of defect of interventricular septum ,4232476 
+Repair of double outlet right ventricle ,4049979 
+Repair of tetralogy of fallot using transannular patch ,4308136 
+Repair of subaortic stenosis ,4018747 
+Replacement of mitral valve NEC ,4203153 
+Repositioning of transposed great arteries ,4019932 
+Revision of cardiac conduit nec/creation of valved conduit between Right ventricle of heart and Pulmonary artery/replacement of valved cardiac conduit/ replacement of pulmonary valve nec ,4339184 
+Revision of cardiac conduit nec/creation of valved conduit between Right ventricle of heart and Pulmonary artery/replacement of valved cardiac conduit/ replacement of pulmonary valve nec ,4019950 
+Revision of cardiac conduit nec/creation of valved conduit between Right ventricle of heart and Pulmonary artery/replacement of valved cardiac conduit/ replacement of pulmonary valve nec ,4020506 
+Revision of cardiac conduit nec/creation of valved conduit between Right ventricle of heart and Pulmonary artery/replacement of valved cardiac conduit/ replacement of pulmonary valve nec ,4178479 
+Total cavopulmonary connection with extracardiac inferior caval vein topulmonary artery conduit ,44789857 
+Transposition of coronary artery NEC ,4296790 
+Tricuspid valve repair NEC ,4293619 
+Unspecified creation of shunt to pulmonary artery from subclavian artery using interposition tube pr ,4019233 
+Unspecified other transplantation of heart/allotransplantation of heart NEC ,4137127 
+Unspecified other transplantation of heart/allotransplantation of heart NEC ,4336751 
+Unspecified repair of defect of interventricular septum ,4199899 
+Unspecified repair of tetralogy of fallot ,4019929 
+Unspecified correction of total anomalous pulmonary  venous connection ,4017751 
+24h holter monitor ,45764527 
+24h holter monitor ,4140473 
+CT head ,4125350 
+CT heart with contrast/ CT cardiac angiogram coronary/ CT cardiac gated with contrast ,4306317 
+CT thorax with contrast ,4327032 
+Cardiopulmonary exercise test (CPET) ,40492338 
+EEG routine ,4181917 
+EEG routine portable ,4205144 
+Epicardial echocardiogram ,4203365 
+Event monitor ,45765560 
+Exercise test (non-CPET) ,4065416 
+FL video swallow ,4345925 
+IR PICC line insertion ,4322380 
+IR bronchogram ,4312208 
+IR bronchoscopy ,4032404 
+IR tunnelled central venous line insertion ,40482732 
+IR tunnelled central venous line removal ,42873079 
+MRI cardiac complex congenital ,44802640 
+MRI head ,4082979 
+Pacemaker/ICD device check - remote patient initiated ,4235141 
+Pacemaker/ICD device check - remote device initiated ,4235141 
+Pacemaker/ICD interrogation (in clinic)/ pacemaker/ICD interrogation (other) ,40488431 
+US abdomen and pelvis/ US abdomen ,4261497 
+US abdomen and pelvis/ US abdomen ,4305221 
+US cranial contents ,4083106 
+US diaphragmatic region ,4303522 
+US doppler ,35622931 
+US doppler groin both ,35622931 
+US doppler groin both ,4167029 
+US doppler jugular vein both ,40489841 
+US doppler lower limb veins both ,4335392 
+US doppler renal both ,4167052 
+US neck ,4083108 
+US thorax and pleural cavity ,4329508 
+US thorax and pleural cavity ,4093436 
+US transoesophageal echocardiogram (toe) ,4019824 
+US transthoracic echocardiogram/ us transthoracic echocardiogram (pre- admission)/ US transthoracic echocardiogram (sedated) ,4335825 
+US urinary tract ,4125530 
+US vocal cord ,44813863 
+XR abdomen ,4264477 
+XR chest ,4163872 
+XR chest and abdomen ,4169275 
+Cardiology ward admission (start datetime and end datetime) ,36675203 
+HDU admission (start datetime and end datetime) ,4161811 
+ICU admission (start datetime and end datetime) ,4123933 
+Total hospital admission (start datetime and end datetime) ,8715 
+Base Excess ,8753 
+Base Excess ,4095105 
+Diagnoses ,4234469 
+Elective ICU admission ,4123933 
+FiO2 ,42869590 
+FiO2 ,8554 
+"High Risk Diagnoses: (None, spontaneous cerbral hemorrhage, cardiomyopathy or myocarditis, hypoplastic left heart syndrome, neurodegenerative disorder, necrotizing enterocolitis) ",43530727 
+"High Risk Diagnoses: (None, spontaneous cerbral hemorrhage, cardiomyopathy or myocarditis, hypoplastic left heart syndrome, neurodegenerative disorder, necrotizing enterocolitis) ",440207 
+"High Risk Diagnoses: (None, spontaneous cerbral hemorrhage, cardiomyopathy or myocarditis, hypoplastic left heart syndrome, neurodegenerative disorder, necrotizing enterocolitis) ",4213310 
+"High Risk Diagnoses: (None, spontaneous cerbral hemorrhage, cardiomyopathy or myocarditis, hypoplastic left heart syndrome, neurodegenerative disorder, necrotizing enterocolitis) ",201957 
+"High Risk Diagnoses: (None, spontaneous cerbral hemorrhage, cardiomyopathy or myocarditis, hypoplastic left heart syndrome, neurodegenerative disorder, necrotizing enterocolitis) ",314383 
+"High Risk Diagnoses: (None, spontaneous cerbral hemorrhage, cardiomyopathy or myocarditis, hypoplastic left heart syndrome, neurodegenerative disorder, necrotizing enterocolitis) ",321319 
+"Low Risk Diagnoses: None, asthma, bronchiolitis, croup, obstructive sleep apnea, diabetic ketoacidosis, seizure disorder ",260134 
+"Low Risk Diagnoses: None, asthma, bronchiolitis, croup, obstructive sleep apnea, diabetic ketoacidosis, seizure disorder ",4165112 
+"Low Risk Diagnoses: None, asthma, bronchiolitis, croup, obstructive sleep apnea, diabetic ketoacidosis, seizure disorder ",442588 
+"Low Risk Diagnoses: None, asthma, bronchiolitis, croup, obstructive sleep apnea, diabetic ketoacidosis, seizure disorder ",4029498 
+"Low Risk Diagnoses: None, asthma, bronchiolitis, croup, obstructive sleep apnea, diabetic ketoacidosis, seizure disorder ",443727 
+"Low Risk Diagnoses: None, asthma, bronchiolitis, croup, obstructive sleep apnea, diabetic ketoacidosis, seizure disorder ",317009 
+Mechanical ventilation ,40493026 
+Outpatient appointment type (telephone/ clinic visit etc.) ,5083 
+"Outpatient appointments start datetime, end datetime ",9202 
+Outpatient specialty ,32577 
+PaCO2 ,44777602 
+PaCO2 ,3027946 
+PaCO2 ,8876 
+Pupillary reaction ,4209008 
+"Reason for ICU admission: (Main reason for ICU admission is not recovery from surgery or a procedure, Recovery from a bypass cardiac procedure, recovery from a non-bypass cardiac procedure, recovery from non-cardiac procedure) ",44803020 
+Systolic blood pressure ,8876 
+Systolic blood pressure ,3004249 
+"Very High Risk Diagnoses: None, cardiac arrest preceding ICU admission, severe combined immune deficiency, leukemia or lymphoma after first induction, bone marrow transplant recipient, liver failure ",42537745 
+"Very High Risk Diagnoses: None, cardiac arrest preceding ICU admission, severe combined immune deficiency, leukemia or lymphoma after first induction, bone marrow transplant recipient, liver failure ",432571 
+"Very High Risk Diagnoses: None, cardiac arrest preceding ICU admission, severe combined immune deficiency, leukemia or lymphoma after first induction, bone marrow transplant recipient, liver failure ",4124462 
+"Very High Risk Diagnoses: None, cardiac arrest preceding ICU admission, severe combined immune deficiency, leukemia or lymphoma after first induction, bone marrow transplant recipient, liver failure ",321042 
+"Very High Risk Diagnoses: None, cardiac arrest preceding ICU admission, severe combined immune deficiency, leukemia or lymphoma after first induction, bone marrow transplant recipient, liver failure ",317510 
+"Very High Risk Diagnoses: None, cardiac arrest preceding ICU admission, severe combined immune deficiency, leukemia or lymphoma after first induction, bone marrow transplant recipient, liver failure ",29783 
+"Very High Risk Diagnoses: None, cardiac arrest preceding ICU admission, severe combined immune deficiency, leukemia or lymphoma after first induction, bone marrow transplant recipient, liver failure ",4245975 
+ALT ,3006923 
+ALT ,8645 
+AST ,3013721 
+AST ,8645 
+Albumin ,8713 
+Albumin ,3024561 
+Albumin ,8636 
+Bicarbonate (arterial) ,8753 
+Bicarbonate (arterial) ,3008152 
+Bicarbonate (venous) ,8753 
+Bicarbonate (venous) ,3027273 
+Bilirubin ,3006140 
+Bilirubin ,8749 
+Blood urea nitrogen ,3024641 
+Blood urea nitrogen ,8753 
+CRP ,8751 
+CRP ,3020460 
+Calcium ,8753 
+Calcium ,3015377 
+Chloride ,8753 
+Chloride ,3018572 
+Creatinine ,8749 
+Creatinine ,8840 
+Creatinine ,3051825 
+Glucose ,3013826 
+Glucose ,8753 
+Hematocrit ,3009542 
+Hematocrit ,8554 
+Hemoglobin ,8713 
+Hemoglobin ,8636 
+Hemoglobin ,40762351 
+INR prothrombin time ,3034426 
+INR prothrombin time ,8555 
+Immature WBC count ,4298431 
+Immature WBC count ,8647 
+Lactate ,3047181 
+Lactate ,8753 
+Magnesium ,8753 
+Magnesium ,3033836 
+Neutrophil count ,3007670 
+Neutrophil count ,8647 
+Phosphate ,3003458 
+Phosphate ,8753 
+Platelet count ,8647 
+Platelet count ,4267147 
+Potassium ,8753 
+Potassium ,3005456 
+Sodium ,3019550 
+Sodium ,8753 
+pCO2 (arterial) ,3027946 
+pCO2 (arterial) ,8876 
+pCO2 (venous) ,44777602 
+pCO2 (venous) ,3021447 
+pCO2 (venous) ,8876 
+pH (arterial) ,37399161 
+pH (venous) ,37392672 
+pO2 (arterial) ,3027801 
+pO2 (arterial) ,8876 
+pO2 (venous) ,3024354 
+pO2 (venous) ,8876 
+CVL infections ,42537043 
+Extracorporeal membrane oxygenation,4052536 
+ICU ward stay ,4123933 
+LCOS - Cardiac arrest ,321042 
+LCOS - NEC requiring treatment ,4185565 
+LCOS - renal support (CVVH/ PD),4324124 
+LCOS - renal support (CVVH/ PD) ,4051330 
+Low cardiac output state (LCOS) - ECMO,4185565
+Low cardiac output state (LCOS) - ECMO ,4185565 
+Neurological injury - intracranial haemmhorage/ intracranial bleeding ,439847 
+Neurological injury - infarction ,443454 
+Neurological injury - seizure ,377091 
+Surgical injury - Blood Loss ,4308537 
+Surgical injury - Chylothorax ,4306136 
+Surgical injury - Reexplore for bleeding,437312 
+Surgical injury - Reexplore for bleeding,442019 
+Surgical injury - Reexplore for bleeding ,4295705 
+Age-dependent HR ,3027018
+Age-dependent HR ,8483 
+Age-dependent RR ,3024171
+Age-dependent RR ,8483 
+SBP (Systolic Blood Pressure) ,3004249
+SBP (Systolic Blood Pressure) ,8876 
+DBP (Dyastolic Blood Pressure) ,3012888
+DBP (Dyastolic Blood Pressure) ,8876 
+SpO2 ,4096101 
+SpO2 ,8554 
+Body Surface Area (BSA) - Combination of weight and height ,4201235 
+Body Surface Area (BSA) - Combination of weight and height ,8617 
+Cardiac surgeries (Interventions) ,4275564 
+Extracardiac anomalies - diagnoses ,0 
+Height ,607590 
+Height ,8582 
+Weight ,3025315 
+Weight ,9529 
+"Antegrade Cerebral Perfusion start datetime, end datetime ",4272324 
+Aristotle's score of surgery ,0 
+"Cardiac bypass start datetime, end datetime ",4336464 
+"Cross-clamping start datetime, end datetime ",4201547 
+"Deep hypothermic circulatory arrest start datetime, end datetime ",37152781 
+"Antegrade Cerebral Perfusion start datetime, end datetime ",4272324 
+Extubation event ,4150627 
+STAT/EACTS score of surgery ,40490494 
+"Surgery start datetime, end datetime ",4301351 
+Admission reason ,44803020 
+ventilation ,0 
+"Vasoactive infusion start datetime, end datetime ",42539650 
+Type of vasoactive infusion ,0 
+VIS score of vasoactive infusion ,0 
+"Postop central venous catheter in/start datetime, out/ end datetime ",4179206 
+"Total ventilation start datetime, end datetime ",0 
+Type of vasoactive infusion ,0 
+VIS score of vasoactive infusion ,0 
+"Vasoactive infusion start datetime, end datetime ",42539650 
+ventilation ,0 
+"Arrhythmia diagnosis (tachyarrhythmia, bradyarrhythmia, atrial, ventricular etc.) ",44784217 
+"Arrhythmia diagnosis (tachyarrhythmia, bradyarrhythmia, atrial, ventricular etc.) ",315643 
+"Arrhythmia diagnosis (tachyarrhythmia, bradyarrhythmia, atrial, ventricular etc.) ",4068155 
+"Arrhythmia diagnosis (tachyarrhythmia, bradyarrhythmia, atrial, ventricular etc.) ",4228448 
+"Arrhythmia diagnosis (tachyarrhythmia, bradyarrhythmia, atrial, ventricular etc.) ",4185572 
+"Arrhythmia therapy (procedures): Cardioversion, Rapid atrial pacing, temporary pacing, permanent pacing) ",4117045 
+"Arrhythmia therapy (procedures): Cardioversion, Rapid atrial pacing, temporary pacing, permanent pacing) ",4353741 
+"Arrhythmia therapy (procedures): Cardioversion, Rapid atrial pacing, temporary pacing, permanent pacing) ",4049398 
+"Arrhythmia therapy (procedures): Cardioversion, Rapid atrial pacing, temporary pacing, permanent pacing) ",4051940 
+Cardiac surgeries (interventions) ,4275564 
+Diaphragmatic Paralysis ,4275136 
+"Drugs administered; Arrhythmia therapy (drugs): IV anthyarritmics (ivabradine, amiodarone, flecainide) ",1309944 
+"Drugs administered; Arrhythmia therapy (drugs): IV anthyarritmics (ivabradine, amiodarone, flecainide) ",46234437 
+"Drugs administered; Arrhythmia therapy (drugs): IV anthyarritmics (ivabradine, amiodarone, flecainide) ",1354860 
+Listed for heart transplantation ,609312 
+Pneumothorax ,253796 
+Sternum reopening (procedure undertaken) ,4044892 
+Tracheostomy ,44783799 
+Vocal Cord Dysfunction ,4046868 
+intubation ,4202832 

@@ -1,15 +1,21 @@
 ---
+# 1. Copy this file using [cp ./config/config-sample.yml ./config/config.yml]
+# 2. In the new file, add the paths under the `config` key; changes in default values will have no effect.
+
+#=========================================================================================================
 ## Default configuration values
 #    Default values are necessary for the `config` CRAN library, not used in package otherwise
 #    No need to change these values
 default:
-  concepts_path: 'inst/extdata/phems_variable_list'  # required for isStandard() function; specifies path to concept list directory with sourceCode and concept_id
-  save_path_isStandard: 'inst/extdata/phems_variable_list/is_standard'  # (optional) if saving standard concept check results. Point to existing directory.
-  save_path_json: 'inst/extdata/json'  # (optional) if saving cohort and/or concept set as json). Point to existing directory
+  concepts_path: './inst/extdata/phems_variables/'  # required for isStandard() function; specifies path to concept list directory with sourceCode and concept_id
+  save_path_isStandard: './inst/extdata/standardness'  # (optional) if saving standard concept check results. Point to existing directory.
+  save_path_json: './inst/extdata/json'  # (optional) if saving cohort and/or concept set as json). Point to existing directory
+  save_path_counts: './inst/extdata/countoccurrences' # where to save results from countOccurrences()
 
 ## Paths for CSVs of concepts and saves
-#    Replace with your paths
+# Add your paths here
 config:
   concepts_path: ''
   save_path_isStandard: ''
   save_path_json: ''
+  save_path_counts: ''

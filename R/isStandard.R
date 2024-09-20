@@ -19,27 +19,35 @@
 #'
 #' @importFrom readr read_csv write_csv
 #' @importFrom dplyr mutate across filter select inner_join
-#' @importFrom DBI dbGetQuery
+#' @importFrom DatabaseConnector connect disconnect querySql
 #' @export
 isStandard <- function(db_connection, data_concepts_path, vocab_schema, save_path = NULL) {
-  library(readr)
-  library(dplyr)
-  library(DBI)
-
+  stopifnot("Error: No or invalid database connection" = DatabaseConnector::dbIsValid(db_connection))
+  stopifnot("Error: No string provided as data_concepts_path. Please point to a directory of CSVs with fields 'conceptId' and 'source_code'" = is.character(data_concepts_path))
+  stopifnot("Error: No string provided as vocab_schema" = is.character(vocab_schema))
+  
   # Read concept table from SQL database
-  concept_table_query <- paste0(
-    "SELECT concept_id, concept_name, standard_concept FROM ", vocab_schema, ".concept"
-    )
-  concept_table <- dbGetQuery(db_connection, concept_table_query) %>%
-    mutate(concept_id = as.character(concept_id)) %>%
-    mutate(concept_id = tolower(trimws(concept_id)))
+  concept_table_query <- SqlRender::render(
+    "SELECT concept_id, CONCEPT_NAME, standard_concept FROM @vocab_schema.concept",
+    vocab_schema = vocab_schema
+  )
+
+  concept_table_query_translated <- SqlRender::translate(
+    sql = concept_table_query,
+    targetDialect = attr(db_connection, "dbms")
+  )
+
+  concept_table <- DatabaseConnector::querySql(db_connection, concept_table_query_translated) |>
+    dplyr::rename(concept_id = CONCEPT_ID) |>
+    dplyr::mutate(concept_id = as.character(concept_id)) |>
+    dplyr::mutate(concept_id = tolower(trimws(concept_id)))
 
   # Initialize vectors for non-standard concepts
   nonStandard <- c()
   conceptNameNonStandard <- c()
   sourceCodeNonStandard <- c()
   sourceTableNonStandard <- c()
-  standardness <- c()
+  standard_concept <- c()
 
   # Get tables from data_concepts_path
   tables <- list.files(path = data_concepts_path, pattern = "\\.csv$", full.names = TRUE)
@@ -48,58 +56,69 @@ isStandard <- function(db_connection, data_concepts_path, vocab_schema, save_pat
   if (length(tables) == 0) {
     stop("No CSV files found in the specified directory.")
   }
-
+  
+  empty_tables <- c()
   for (table_path in tables) {
     table_name <- basename(table_path)
 
     # Read and prepare table
     tb <-
-      readr::read_csv(table_path, col_types = cols(sourceCode = col_character(), concept_id = col_character())) %>%
-      mutate(across(c(sourceCode, concept_id), ~gsub("\u00A0", " ", .))) %>%
-      mutate(across(c(sourceCode, concept_id), ~trimws(.))) %>%
-      filter(!is.na(sourceCode), !is.na(concept_id)) %>%
-      mutate(concept_id = tolower(concept_id),
-             concept_id = as.character(concept_id)) %>%
-      select(sourceCode, concept_id)
+      readr::read_csv(table_path, col_types = readr::cols(
+        sourceCode = readr::col_character(),
+        concept_id = readr::col_character()
+      )) |>
+      dplyr::mutate(across(c(sourceCode, concept_id), ~ gsub("\u00A0", " ", .))) |>
+      dplyr::mutate(dplyr::across(c(sourceCode, concept_id), ~ trimws(.))) |>
+      dplyr::filter(!is.na(sourceCode), !is.na(concept_id)) |>
+      dplyr::mutate(
+        concept_id = tolower(concept_id),
+        concept_id = as.character(concept_id)
+      ) |>
+      dplyr::select(sourceCode, concept_id)
 
     # Join tables
-    joined <- inner_join(concept_table, tb, by = "concept_id")
+    joined <- dplyr::inner_join(concept_table, tb, by = "concept_id")|>
+      dplyr::rename(standard_concept = STANDARD_CONCEPT, concept_name = CONCEPT_NAME) |>
+      dplyr::mutate(standard_concept = ifelse(is.na(standard_concept), 'Non-standard', standard_concept)) |>
+      dplyr::mutate(standard_concept = dplyr::recode(
+        standard_concept,
+        "S" = "Standard"
+      )) |>
+      dplyr::filter(!(standard_concept == "Standard"))
 
     # Add non-standard concept info to vectors
-    ind <- which(!(joined$standard_concept %in% c('S')))
+    ind <- which(!(joined$standard_concept %in% c("S")))
     nonStandard <- append(nonStandard, joined$concept_id[ind])
     conceptNameNonStandard <- append(conceptNameNonStandard, joined$concept_name[ind])
     sourceCodeNonStandard <- append(sourceCodeNonStandard, joined$sourceCode[ind])
-    sourceTableNonStandard <- append(sourceTableNonStandard,
-                                     replicate(length(ind), table_name, simplify="vector"))
-    standardness <- append(standardness, joined$standard_concept[ind])
-
-    if (length(ind) == 0) {
-      message("No non-standard concepts found in list of concepts: ", table_name)
-    } else {
-      message(paste("Found ", length(ind), " non-standard concepts in list of concepts: ", table_name))
-    }
+    sourceTableNonStandard <- append(
+      sourceTableNonStandard,
+      replicate(length(ind), table_name, simplify = "vector")
+    )
+    standard_concept <- append(standard_concept, joined$standard_concept[ind])
 
     # Save if not empty and save_path is provided
     if (!is.null(save_path) && nrow(joined) > 0) {
-      message(paste0("saving file: ", table_name))
-      readr::write_csv(joined, paste0(save_path, "/", table_name))
+      message(paste0("saving file: ./isStandard_", table_name))
+      readr::write_csv(joined, paste0(save_path, "/isStandard_", table_name))
     } else if (is.null(save_path)) {
       next
     } else {
-      message(paste("No matches found for concept set.\n"))
+      empty_tables <- append(empty_tables, table_name)
+      message(paste0("No matches found for file: ", data_concepts_path, "/", table_name, ".\n"))
     }
   }
-  
-  # NA == non-standard
-  standardness[is.na(standardness)] <- "Non-standard"
+  message(paste0("A file with the names of tables/files without non-standard concepts is saved here: ",
+                 save_path, "/isStandard_OnlyStandard.txt"))
+  readr::write_file(paste(empty_tables, collapse="\n"), paste0(save_path, "/isStandard_OnlyStandard.txt"))
+
   # Create table of non-standard concepts
   res <- tibble::tibble(
     concept_id = nonStandard,
     concept_name = conceptNameNonStandard,
     source_code = sourceCodeNonStandard,
     source_table = unlist(sourceTableNonStandard),
-    standardness = standardness
+    standard_concept = standard_concept
   )
   message(paste0("Finished checking for non-standard concepts.\n", nrow(res), " non-standard concepts found across tables."))
 
